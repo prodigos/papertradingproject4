@@ -42,7 +42,40 @@ const GraphBox = () => {
       {selectedStock && (
         <div>
           <p>Stock Selected = {selectedStock}</p>
-
+          <br/>
+          <button
+            className={
+              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+            }
+          >
+            1
+          </button>
+          &nbsp;&nbsp;
+          <button
+            className={
+              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+            }
+          >
+            5
+          </button>
+          &nbsp;&nbsp;
+          <button
+            className={
+              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+            }
+          >
+            10
+          </button>
+          &nbsp;&nbsp;
+          <button
+            className={
+              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+            }
+          >
+            15
+          </button>
+          &nbsp;&nbsp;
+          <br/>
           <button
             className={
               "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
@@ -50,7 +83,7 @@ const GraphBox = () => {
           >
             Buy
           </button>
-
+          &nbsp;&nbsp;
           <button
             className={
               "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
