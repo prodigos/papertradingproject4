@@ -5,6 +5,7 @@ const GraphBox = () => {
   const [funds, setFunds] = useState(100000);
   const [searchStockStr, setSearchStockStr] = useState("");
   const [selectedStock, setSelectedStock] = useState("");
+  const [sharesButtons, setSharesButton] = useState(Number("0"));
 
   const getQuote = async () => {
     setSelectedStock(searchStockStr);
@@ -18,6 +19,11 @@ const GraphBox = () => {
     // console.log(event.currentTarget.value);
     setSearchStockStr(event.currentTarget.value);
   };
+
+    const updateShares = async (event) => {
+        setSharesButton(sharesButtons)
+        debugger
+    }
 
   return (
     <div className={"w-2/3 border p-10"}>
@@ -42,40 +48,70 @@ const GraphBox = () => {
       {selectedStock && (
         <div>
           <p>Stock Selected = {selectedStock}</p>
-          <br/>
-          <button
+          <br />
+          <button onClick={updateShares}
+            // onClick={() => {
+            //   setSharesButton(1);
+            // }}
             className={
-              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
-            }
+              sharesButtons === 1
+                ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+                : "border border-brown-400 p-1 text-white bg-green-600 rounded"
+            } value={sharesButtons}
           >
             1
           </button>
           &nbsp;&nbsp;
           <button
+            onClick={() => {
+              setSharesButton(5);
+            }}
             className={
-              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+              sharesButtons === 5
+                ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+                : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
           >
             5
           </button>
           &nbsp;&nbsp;
-          <button
+          <button onClick={() => {
+              setSharesButton(10);
+            }}
             className={
-              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+              sharesButtons === 10
+                ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+                : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
           >
             10
           </button>
           &nbsp;&nbsp;
-          <button
+          <button onClick={() => {
+              setSharesButton(15);
+            }}
             className={
-              "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+              sharesButtons === 15
+                ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+                : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
           >
             15
           </button>
           &nbsp;&nbsp;
-          <br/>
+          <button onClick={() => {
+              setSharesButton(20);
+            }}
+            className={
+              sharesButtons === 20
+                ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
+                : "border border-brown-400 p-1 text-white bg-green-600 rounded"
+            }
+          >
+            20
+          </button>
+          &nbsp;&nbsp;
+          <br />
           <button
             className={
               "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
