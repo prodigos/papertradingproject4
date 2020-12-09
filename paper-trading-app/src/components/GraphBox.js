@@ -1,86 +1,86 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 
-let hardcodedStocks = [
-  { name: "AAPL", price: "120" },
-  { name: "AMZ", price: "235" },
-  { name: "GE", price: "21" },
-];
+// let hardcodedStocks = [
+//   { name: "AAPL", price: "120" },
+//   { name: "AMZ", price: "235" },
+//   { name: "GE", price: "21" },
+// ];
 
-const GraphBox = () => {
+const GraphBox = (props) => {
   
-  const [funds, setFunds] = useState(100000);
-  const [searchStockStr, setSearchStockStr] = useState("");
-  const [selectedStock, setSelectedStock] = useState("");
-  const [sharesButtons, setSharesButton] = useState(Number("0"));
+  // const [funds, setFunds] = useState(100000);
+  // const [searchStockStr, setSearchStockStr] = useState("");
+  // const [selectedStock, setSelectedStock] = useState("");
+  // const [sharesButtons, setSharesButton] = useState(Number("0"));
 
-  const getQuote = async () => {
-    let stock;
-    hardcodedStocks.map((s) => {
-      if (s.name === searchStockStr) {
-        stock = s;
-      }
-      return stock
-    });
+  // const getQuote = async () => {
+  //   let stock;
+  //   hardcodedStocks.map((s) => {
+  //     if (s.name === searchStockStr) {
+  //       stock = s;
+  //     }
+  //     return stock
+  //   });
 
-    console.log(stock);
+  //   console.log(stock);
 
-    setSelectedStock(stock);
-    // console.log(
-    //   "get Quote was clicked! also the value of the search is: ",
-    //   searchStockStr
-    // );
-    setSearchStockStr(" ");
-  };
-  const onInputChange = async (event) => {
-    setSearchStockStr(event.currentTarget.value);
-  };
+  //   setSelectedStock(stock);
+  //   // console.log(
+  //   //   "get Quote was clicked! also the value of the search is: ",
+  //   //   searchStockStr
+  //   // );
+  //   setSearchStockStr(" ");
+  // };
+  // const onInputChange = async (event) => {
+  //   setSearchStockStr(event.currentTarget.value);
+  // };
 
-  const updateShares = async (num) => {
-    setSharesButton(num);
-  };
+  // const updateShares = async (num) => {
+  //   setSharesButton(num);
+  // };
 
-  const buyStock = async () => {
+  // const buyStock = async () => {
 
-    console.log("User wants to buy : ", sharesButtons , 'shares' , 'of', selectedStock.name, "at current price of ", selectedStock.price)
-    let cost = sharesButtons * selectedStock.price;
-    console.log("cost is = ", cost);
-    let subs = funds - cost;
-    setFunds(subs);
-  }
+  //   console.log("User wants to buy : ", sharesButtons , 'shares' , 'of', selectedStock.name, "at current price of ", selectedStock.price)
+  //   let cost = sharesButtons * selectedStock.price;
+  //   console.log("cost is = ", cost);
+  //   let subs = funds - cost;
+  //   setFunds(subs);
+  // }
 
 
   return (
     <div className={"w-2/3 border p-10"}>
       <h1>graphbox</h1>
-      <h1>Funds Available : {funds}</h1>
+      <h1>Funds Available : </h1>
       <input
         type={"text"}
-        placeholder={"search"}
+        placeholder="search"
         className={"border"}
-        onChange={onInputChange}
-        value={searchStockStr}
+        onChange={props.onInputChange()}
+        value={props.searchStockStr}
       />
       &nbsp;
       <button
         className={
           "border border-teal-500 pl-2 pr-2 text-white bg-yellow-600 rounded"
         }
-        onClick={getQuote}
+        onClick={props.getQuote()}
       >
         Get Quote
       </button>
-      {selectedStock && (
+      {props.selectedStock && (
         <div>
           <p className="border border-brown-400 p-1 text-white bg-green-600 rounded">
-            Stock Selected = {selectedStock.name} | Price = $
-            {selectedStock.price}
+            Stock Selected = {props.selectedStock.name} | Price = $
+            {props.selectedStock.price}
           </p>
           <br />
           <button
-            onClick={() => updateShares(1)}
+            onClick={() => props.updateShares(1)}
             className={
-              sharesButtons === 1
+              props.sharesButtons === 1
                 ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
                 : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
@@ -89,9 +89,9 @@ const GraphBox = () => {
           </button>
           &nbsp;&nbsp;
           <button
-            onClick={() => updateShares(5)}
+            onClick={() => props.updateShares(5)}
             className={
-              sharesButtons === 5
+              props.sharesButtons === 5
                 ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
                 : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
@@ -101,10 +101,10 @@ const GraphBox = () => {
           &nbsp;&nbsp;
           <button
             onClick={() => {
-              setSharesButton(10);
+              props.setSharesButton(10);
             }}
             className={
-              sharesButtons === 10
+              props.sharesButtons === 10
                 ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
                 : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
@@ -114,10 +114,10 @@ const GraphBox = () => {
           &nbsp;&nbsp;
           <button
             onClick={() => {
-              setSharesButton(15);
+              props.setSharesButton(15);
             }}
             className={
-              sharesButtons === 15
+              props.sharesButtons === 15
                 ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
                 : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
@@ -127,10 +127,10 @@ const GraphBox = () => {
           &nbsp;&nbsp;
           <button
             onClick={() => {
-              setSharesButton(20);
+              props.setSharesButton(20);
             }}
             className={
-              sharesButtons === 20
+              props.sharesButtons === 20
                 ? "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
                 : "border border-brown-400 p-1 text-white bg-green-600 rounded"
             }
@@ -143,7 +143,7 @@ const GraphBox = () => {
             className={
               "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
             }
-            onClick={buyStock}
+            onClick={props.buyStock}
           >
             Buy
           </button>
