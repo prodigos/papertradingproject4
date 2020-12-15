@@ -2,6 +2,7 @@ import React from "react";
 // import { useState } from "react";
 
 const GraphBox = ({
+  funds,
   getQuote,
   onInputChange,
   updateShares,
@@ -14,12 +15,13 @@ const GraphBox = ({
   return (
     <div className={"w-2/3 border p-10"}>
       <h1>graphbox</h1>
-      <h1>Funds Available : </h1>
+      <h1>Funds Available : {funds}</h1>
       <input
+      name={"searchInput"}
         type={"text"}
         placeholder="search"
         className={"border"}
-        onChange={() => onInputChange()}
+        onChange={(event) => onInputChange(event)}
         value={searchStockStr}
       />
       &nbsp;

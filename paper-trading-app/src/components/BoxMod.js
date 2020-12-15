@@ -10,38 +10,43 @@ let hardcodedStocks = [
 ];
 
 const BoxMod = () => {
-    const [funds, setFunds] = useState(100000);
-    const [searchStockStr, setSearchStockStr] = useState("");
-    const [selectedStock, setSelectedStock] = useState("");
-    const [sharesButtons, setSharesButton] = useState(Number("0"));
+  const [funds, setFunds] = useState(100000);
+  const [searchStockStr, setSearchStockStr] = useState("");
+  const [selectedStock, setSelectedStock] = useState("");
+  const [sharesButtons, setSharesButton] = useState(Number("0"));
 
-    const getQuote = async (arr) => {
-      let stock;
-      hardcodedStocks.map((s) => {
-        if (s.name === searchStockStr) {
-          stock = s;
-        }
-        return stock;
-      });
+  const getQuote = async (arr) => {
+    let stock;
+    hardcodedStocks.forEach((s) => {
+      if (s.name === searchStockStr) {
+        stock = s;
+      }
+      console.log(s);
+      console.log(searchStockStr);
+    });
+    // return stock;
 
-    //   console.log(stock);
+    console.log(stock);
 
-      setSelectedStock(stock);
-      // console.log(
-      //   "get Quote was clicked! also the value of the search is: ",
-      //   searchStockStr
-      // );
-      setSearchStockStr(" ");
-    };
-    const onInputChange = async (event) => {
-      setSearchStockStr(event.currentTarget.value);
-    };
+    setSelectedStock(stock);
+    // console.log(
+    //   "get Quote was clicked! also the value of the search is: ",
+    //   searchStockStr
+    // );
+    setSearchStockStr(" ");
+  };
+  const onInputChange = async (event) => {
+    // debugger
+    console.log(event.currentTarget.value);
 
-    const updateShares = async (num) => {
-      setSharesButton(num);
-    };
+    setSearchStockStr(event.currentTarget.value);
+  };
 
-    const buyStock = async () => {
+  const updateShares = async (num) => {
+    setSharesButton(num);
+  };
+
+  const buyStock = async () => {
     //   console.log(
     //     "User wants to buy : ",
     //     sharesButtons,
@@ -51,23 +56,22 @@ const BoxMod = () => {
     //     "at current price of ",
     //     selectedStock.price
     //   );
-      let cost = sharesButtons * selectedStock.price;
-      console.log("cost is = ", cost);
-      let subs = funds - cost;
-      setFunds(subs);
-    };
+    let cost = sharesButtons * selectedStock.price;
+    console.log("cost is = ", cost);
+    let subs = funds - cost;
+    setFunds(subs);
+  };
 
   return (
     <div className={"flex"}>
-      <GraphBox 
-      
-      getQuote={getQuote}
-      onInputChange={onInputChange}
-      updateShares={updateShares}
-      buyStock={buyStock}
+      <GraphBox funds={funds}
+        getQuote={getQuote}
+        onInputChange={onInputChange}
+        updateShares={updateShares}
+        buyStock={buyStock}
       />
-
-      <PortfolioBox />
+      {selectedStock && JSON.stringify(selectedStock)}
+      {selectedStock && <PortfolioBox selectedStock={selectedStock} />}
     </div>
   );
 };
