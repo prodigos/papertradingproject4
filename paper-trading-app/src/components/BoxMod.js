@@ -14,6 +14,7 @@ const BoxMod = () => {
   const [searchStockStr, setSearchStockStr] = useState("");
   const [selectedStock, setSelectedStock] = useState("");
   const [sharesButtons, setSharesButton] = useState(Number("0"));
+  const [totalAmount, setTotalAmount] = useState(funds);
 
   const getQuote = async (arr) => {
     let stock;
@@ -59,15 +60,19 @@ const BoxMod = () => {
     let cost = sharesButtons * selectedStock.price;
     console.log("cost is = ", cost);
     let subs = funds - cost;
+    
     setFunds(subs);
+    setTotalAmount(subs);
   };
 
-const sellStock = () => {
-  let cost = sharesButtons *selectedStock.price;
-  console.log("selling amount is " , cost);
-  let adds = funds + cost;
-  setFunds(adds);
-}
+  const sellStock = () => {
+    let cost = sharesButtons * selectedStock.price;
+    console.log("selling amount is ", cost, totalAmount);
+    
+    let adds = funds + cost;
+    setFunds(adds);
+    setTotalAmount(adds);
+  };
 
   return (
     <div className={"flex"}>
@@ -81,7 +86,7 @@ const sellStock = () => {
         sellStock={sellStock}
       />
       {/* {selectedStock && JSON.stringify(selectedStock)} */}
-      <PortfolioBox selectedStock={selectedStock} />
+      <PortfolioBox selectedStock={selectedStock} totalAmount={totalAmount}/>
     </div>
   );
 };
