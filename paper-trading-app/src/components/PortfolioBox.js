@@ -1,12 +1,13 @@
 import React from "react";
 
-const PortfolioBox = ({ selectedStock }) => {
+const PortfolioBox = ({ selectedStock , hardcodedStocks}) => {
   return (
       
       <div className={"flex w-1/3 border p-5"}>
-      <h1>here stocks will be displayed = </h1>
+      {/* <h1>{hardcodedStocks} </h1> */}
       <h1>selected stock = {selectedStock.name}</h1>
-      <p>this is your stock = {selectedStock.name}</p>
+      
+      <p>price = ${selectedStock.price}</p>
     </div>
   );
 };

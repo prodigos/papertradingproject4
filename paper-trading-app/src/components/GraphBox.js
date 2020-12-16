@@ -9,7 +9,7 @@ const GraphBox = ({
   buyStock,
   selectedStock,
   sharesButtons,
-  setSharesButton,
+  sellStock,
   searchStockStr,
 }) => {
   return (
@@ -17,7 +17,7 @@ const GraphBox = ({
       <h1>graphbox</h1>
       <h1>Funds Available : {funds}</h1>
       <input
-      name={"searchInput"}
+        name={"searchInput"}
         type={"text"}
         placeholder="search"
         className={"border"}
@@ -64,7 +64,7 @@ const GraphBox = ({
           &nbsp;&nbsp;
           <button
             onClick={() => {
-              setSharesButton(10);
+              updateShares(10);
             }}
             className={
               sharesButtons === 10
@@ -77,7 +77,7 @@ const GraphBox = ({
           &nbsp;&nbsp;
           <button
             onClick={() => {
-              setSharesButton(15);
+              updateShares(15);
             }}
             className={
               sharesButtons === 15
@@ -90,7 +90,7 @@ const GraphBox = ({
           &nbsp;&nbsp;
           <button
             onClick={() => {
-              setSharesButton(20);
+              updateShares(20);
             }}
             className={
               sharesButtons === 20
@@ -115,6 +115,7 @@ const GraphBox = ({
             className={
               "border border-teal-400 p-1 text-white bg-yellow-600 rounded"
             }
+            onClick={() => sellStock()}
           >
             Sell
           </button>

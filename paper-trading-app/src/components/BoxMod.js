@@ -62,16 +62,26 @@ const BoxMod = () => {
     setFunds(subs);
   };
 
+const sellStock = () => {
+  let cost = sharesButtons *selectedStock.price;
+  console.log("selling amount is " , cost);
+  let adds = funds + cost;
+  setFunds(adds);
+}
+
   return (
     <div className={"flex"}>
-      <GraphBox funds={funds}
+      <GraphBox
+        funds={funds}
+        selectedStock={selectedStock}
         getQuote={getQuote}
         onInputChange={onInputChange}
         updateShares={updateShares}
         buyStock={buyStock}
+        sellStock={sellStock}
       />
-      {selectedStock && JSON.stringify(selectedStock)}
-      {selectedStock && <PortfolioBox selectedStock={selectedStock} />}
+      {/* {selectedStock && JSON.stringify(selectedStock)} */}
+      <PortfolioBox selectedStock={selectedStock} />
     </div>
   );
 };
