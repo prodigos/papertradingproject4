@@ -22,12 +22,12 @@ const BoxMod = () => {
       if (s.name === searchStockStr) {
         stock = s;
       }
-      console.log(s);
-      console.log(searchStockStr);
+      // console.log(s);
+      // console.log(searchStockStr);
     });
     // return stock;
 
-    console.log(stock);
+    // console.log(stock);
 
     setSelectedStock(stock);
     // console.log(
@@ -38,7 +38,7 @@ const BoxMod = () => {
   };
   const onInputChange = async (event) => {
     // debugger
-    console.log(event.currentTarget.value);
+    // console.log(event.currentTarget.value);
 
     setSearchStockStr(event.currentTarget.value);
   };
@@ -58,21 +58,23 @@ const BoxMod = () => {
     //     selectedStock.price
     //   );
     let cost = sharesButtons * selectedStock.price;
-    console.log("cost is = ", cost);
+    // console.log("cost is = ", cost);
     let subs = funds - cost;
-    
+
     setFunds(subs);
     setTotalAmount(subs);
   };
 
   const sellStock = () => {
     let cost = sharesButtons * selectedStock.price;
-    console.log("selling amount is ", cost, totalAmount);
-    
+    // console.log("selling amount is ", cost, totalAmount);
+
     let adds = funds + cost;
     setFunds(adds);
     setTotalAmount(adds);
   };
+
+  
 
   return (
     <div className={"flex"}>
@@ -86,7 +88,7 @@ const BoxMod = () => {
         sellStock={sellStock}
       />
       {/* {selectedStock && JSON.stringify(selectedStock)} */}
-      <PortfolioBox selectedStock={selectedStock} totalAmount={totalAmount}/>
+      <PortfolioBox selectedStock={selectedStock} totalAmount={totalAmount} />
     </div>
   );
 };

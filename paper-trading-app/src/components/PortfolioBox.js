@@ -1,6 +1,8 @@
 import React from "react";
 
-const PortfolioBox = ({ selectedStock , hardcodedStocks, totalAmount}) => {
+const PortfolioBox = ({ selectedStock , totalAmount}) => {
+
+
   return (
       
       <div className={"flex w-1/3 border p-5"}>
@@ -9,6 +11,7 @@ const PortfolioBox = ({ selectedStock , hardcodedStocks, totalAmount}) => {
       
       <p>price = ${selectedStock.price}</p>
       <p>total amount = ${totalAmount}</p>
+      
     </div>
   );
 };
